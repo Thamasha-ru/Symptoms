@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:symptops/main.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 class TestCovid extends StatelessWidget {
   const TestCovid({super.key});
@@ -43,7 +44,7 @@ class TestCovid extends StatelessWidget {
                       height: 50,
                     ),
                     Text(
-                      "Self Chek Up \nFor Covid-19.",
+                      "Self Check Up \nFor Covid-19.",
                       style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
@@ -86,6 +87,50 @@ class TestCovid extends StatelessWidget {
         ),
         SizedBox(
           height: 20,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Text(
+            "Have you experienced any of the following symptoms:",
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 10,
+          ),
+          height: 500,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 4),
+                  blurRadius: 24,
+                  color: Colors.black,
+                )
+              ]),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(40.0),
+                child: Text(
+                  "Fever",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+            ],
+
+            //Container()
+          ),
         ),
       ]),
     ));
