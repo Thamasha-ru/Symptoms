@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:symptops/main.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:symptops/vaccinestatus.dart';
 
 class TestCovid extends StatelessWidget {
   const TestCovid({super.key});
@@ -92,7 +94,96 @@ class TestCovid extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
             "Have you experienced any of the following symptoms:",
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          //image:AssetImage("")
+          margin: EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 10,
+          ),
+          height: 360,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.fill, image: AssetImage("assets/images/t.png")),
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 4),
+                  blurRadius: 24,
+                  color: Colors.white,
+                )
+              ]),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              Row(
+                children: [
+                  //     Padding(
+                  //       padding: const EdgeInsets.all(16.0),
+                  //       child: Text(
+                  //         "Fever",
+                  //         textAlign: TextAlign.left,
+                  //         style: TextStyle(fontSize: 20),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(16.0),
+                  //   child: Text(
+                  //     "Caught",
+                  //     textAlign: TextAlign.left,
+                  //     style: TextStyle(fontSize: 20),
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(16.0),
+                  //   child: Text(
+                  //     "Sor Throat",
+                  //     textAlign: TextAlign.left,
+                  //     style: TextStyle(fontSize: 20),
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(16.0),
+                  //   child: Text(
+                  //     "headache",
+                  //     textAlign: TextAlign.left,
+                  //     style: TextStyle(fontSize: 20),
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(16.0),
+                  //   child: Text(
+                  //     "Dificult in Breasthing",
+                  //     textAlign: TextAlign.left,
+                  //     style: TextStyle(fontSize: 20),
+                  //   ),
+                  // ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      "    If you have bellow symptoms you are at a risk of Covid-19 ",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                  ),
+                ],
+              )
+            ], //vacined or not
+
+            //Container()
           ),
         ),
         SizedBox(
@@ -103,7 +194,7 @@ class TestCovid extends StatelessWidget {
             horizontal: 20,
             vertical: 10,
           ),
-          height: 500,
+          height: 140,
           width: double.infinity,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
@@ -119,17 +210,48 @@ class TestCovid extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             // ignore: prefer_const_literals_to_create_immutables
             children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      "Are you vaccined or not?",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const VaccineStatus(),
+                        ),
+                      );
+                    },
+                    child: const Text('Vaccine Details >'),
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.blueGrey),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
               Padding(
-                padding: const EdgeInsets.all(40.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  "Fever",
-                  textAlign: TextAlign.left,
-                  style: TextStyle(fontSize: 16),
+                  "    If you didn't vaccined yet, You have risk of Covid-19 ",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.redAccent),
                 ),
               ),
             ],
-
-            //Container()
           ),
         ),
       ]),
